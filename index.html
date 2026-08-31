@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Landing pages ERP - Tisserin Maison Individuelle</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="gabarit/lp-erp.css">
+<style>
+  .idx{max-width:960px;margin-inline:auto;padding:clamp(3rem,8vw,6rem) var(--pad)}
+  .idx h1{font-size:clamp(2.2rem,4.4vw,3.4rem);margin-bottom:1rem}
+  .idx .lede{margin-bottom:clamp(2.5rem,5vw,3.5rem)}
+  .idx-liste{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;list-style:none;margin:0;padding:0}
+  .idx-liste a{display:flex;flex-direction:column;height:100%;background:var(--blanc);
+    border:1px solid #EAEAEA;border-radius:var(--radius-carte);overflow:hidden;
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .idx-liste a:hover{transform:translateY(-4px);box-shadow:0 24px 40px -28px rgba(28,36,51,.5)}
+  .idx-liste img{width:100%;aspect-ratio:16/10;object-fit:cover}
+  .idx-liste div{padding:1.35rem 1.5rem 1.6rem}
+  .idx-liste h2{font-size:1.3125rem;line-height:1.15;letter-spacing:-1px;margin-bottom:.4rem}
+  .idx-liste p{font-size:.9375rem;line-height:1.55;color:var(--texte)}
+  .idx-note{margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1.5rem;border-top:1px solid var(--trait);
+    font-size:.875rem;line-height:1.6;color:var(--texte-clair);max-width:70ch}
+  @media(max-width:820px){.idx-liste{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="idx">
+  <h1>Landing pages ERP</h1>
+  <p class="lede">Tisserin Maison Individuelle. Un gabarit unique, trois métiers. Seuls les titres, les textes et les visuels changent d'une page à l'autre.</p>
+
+  <ul class="idx-liste">
+    <li><a href="petite-enfance.html">
+      <img src="assets/creche-exterieur.jpg" alt="Micro-crèche au format maison" loading="lazy">
+      <div>
+        <h2>Petite enfance</h2>
+        <p>Micro-crèches et lieux d'accueil de jeunes enfants.</p>
+      </div>
+    </a></li>
+    <li><a href="medical.html">
+      <img src="assets/medical-exterieur.jpg" alt="Cabinet médical au format maison" loading="lazy">
+      <div>
+        <h2>Médical</h2>
+        <p>Cabinets, maisons de santé et lieux de soin.</p>
+      </div>
+    </a></li>
+    <li><a href="professions-reglementees.html">
+      <img src="assets/bureau-exterieur.jpg" alt="Bureaux professionnels au format maison" loading="lazy">
+      <div>
+        <h2>Professions réglementées</h2>
+        <p>Études, cabinets et bureaux recevant de la clientèle.</p>
+      </div>
+    </a></li>
+  </ul>
+
+  <p class="idx-note">Maquettes de recette, hébergées pour relecture. Les pages sont en
+    <code>noindex, nofollow</code>. Le formulaire de contact n'est pas branché : il reprend le
+    balisage du formulaire de rappel du site, mais aucune donnée n'est envoyée depuis ici. Le
+    téléphone et l'email du pied de page sont des valeurs à compléter.</p>
+</main>
+</body>
+</html>

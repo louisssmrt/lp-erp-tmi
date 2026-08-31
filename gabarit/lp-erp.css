@@ -1,0 +1,399 @@
+/* =========================================================================
+   TMI - Landing pages ERP - systeme partage (gabarit unique)
+   Tokens releves sur le site live www.tisserin-maisonindividuelle.fr
+   (kit Elementor post 7 + theme Spaciaz), le 2026-08-26.
+   Typo : Involve (titres, 700, ls -2px) + Switzer (texte, 400/600)
+   Couleurs : sable #CEAE95 / navy #2F3D58 / encre #1C2433 / menthe #DFEEEB
+   ========================================================================= */
+
+/* ---- Polices du site TMI, auto-hebergees (memes fichiers que le theme) ---- */
+@font-face{font-family:"Involve";src:url("../assets/fonts/Involve-SemiBold.woff2") format("woff2"),url("../assets/fonts/Involve-SemiBold.woff") format("woff");font-weight:600 700;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url("../assets/fonts/Switzer-Regular.woff2") format("woff2"),url("../assets/fonts/Switzer-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url("../assets/fonts/Switzer-Semibold.woff2") format("woff2"),url("../assets/fonts/Switzer-Semibold.woff") format("woff");font-weight:600 700;font-style:normal;font-display:swap}
+
+:root{
+  /* couleurs = Global Colors du kit Elementor */
+  --sable:#CEAE95;
+  --sable-hover:#BE9B7F;
+  --navy:#2F3D58;
+  --encre:#1C2433;
+  --menthe:#DFEEEB;
+  --texte:#4B4B4B;
+  --texte-clair:#6E6E6E;
+  --trait:#E0E0E0;
+  --blanc:#FFFFFF;
+  --casse:#F5F4F1;       /* blanc casse, une section sur deux */
+
+  --wrap:1290px;
+  --pad:clamp(1.25rem,4vw,2.5rem);
+  --sec:clamp(4.5rem,8vw,7.5rem);
+  --radius-bloc:24px;
+  --radius-carte:20px;
+  --radius-hero:28px;
+  --cadre:20px;          /* marge blanche autour de la carte hero */
+  --hdr-h:84px;          /* hauteur du header, retiree de la hauteur du hero */
+
+  --disp:"Involve","Century Gothic",system-ui,sans-serif;
+  --sans:"Switzer",system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--blanc);color:var(--texte);
+  font-family:var(--sans);font-size:18px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+h1,h2,h3,h4{font-family:var(--disp);font-weight:700;color:var(--encre);margin:0;letter-spacing:-2px;line-height:1.06}
+h1{font-size:clamp(2.6rem,5.6vw,5.625rem);line-height:1}
+h2{font-size:clamp(2.1rem,4.4vw,4.375rem)}
+h2.h2-sm{font-size:clamp(1.75rem,2.6vw,2.375rem);line-height:1}
+h3{font-size:1.3125rem;line-height:1.15;letter-spacing:-1px}
+p{margin:0}
+
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+.lede{font-size:clamp(1.0625rem,.5vw+.95rem,1.25rem);line-height:1.6;max-width:56ch}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---- Le bouton du site -----------------------------------------------------
+   Pilule pleine, rond de 38px loge dans le bord droit, d'une autre couleur.
+   L'animation est celle du theme TMI, reprise a l'identique du bouton de la
+   pop-up de rappel (spaciaz-child/tmi-popup-contact.css) : au survol la fleche
+   part vers le haut a droite en retrecissant, et une seconde fleche entre par
+   le bas a gauche. Ce n'est PAS une rotation.
+   Une seule mecanique de bouton sur toute la page, comme sur le site. */
+.btn{
+  font:600 15px/1 var(--sans);
+  display:inline-flex;align-items:center;justify-content:space-between;gap:14px;
+  min-height:52px;padding:7px 8px 7px 28px;cursor:pointer;
+  border:none;border-radius:999px;text-transform:none;letter-spacing:0;
+  background:var(--navy);color:var(--blanc);
+  transition:background .2s ease,color .2s ease,transform .2s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:2px solid var(--encre);outline-offset:3px}
+.btn-txt{flex:0 0 auto}
+.btn-rond{
+  flex:0 0 38px;width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--blanc);color:var(--navy);transition:background .2s ease;
+}
+.btn-icon-wrap{width:18px;height:18px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.btn-icon,.btn-icon-hover{display:flex;color:currentColor;transition:transform .35s linear}
+.btn-icon svg,.btn-icon-hover svg{width:14px;height:14px;display:block}
+.btn-icon{transform:translate3d(0,0,0) scale3d(1,1,1) rotate(-45deg);transform-style:preserve-3d}
+.btn-icon-hover{position:absolute;transform:translate3d(-17px,17px,0) scale3d(.2,.2,1) rotate(-45deg)}
+.btn:hover .btn-icon{transform:translate3d(17px,-17px,0) scale3d(.2,.2,1) rotate(-45deg)}
+.btn:hover .btn-icon-hover{transform:translate3d(0,0,0) scale3d(1,1,1) rotate(-45deg)}
+
+.btn--navy{background:var(--navy);color:var(--blanc)}
+.btn--navy:hover{background:var(--encre)}
+.btn--navy:hover .btn-rond{background:var(--menthe)}
+.btn--sable{background:var(--sable);color:var(--encre)}
+.btn--sable:hover{background:var(--sable-hover)}
+.btn--sable:hover .btn-rond{background:var(--menthe)}
+/* Bouton secondaire : fond blanc, bordure et texte encre, SANS pastille. */
+.btn--contour{background:var(--blanc);color:var(--encre);border:1px solid var(--encre);
+  padding:15px 28px;justify-content:center}
+.btn--contour:hover{background:var(--encre);color:var(--blanc)}
+/* Version compacte, pour le header */
+.btn--sm{min-height:44px;padding:5px 5px 5px 22px;gap:12px;font-size:14px}
+.btn--sm .btn-rond{flex:0 0 34px;width:34px;height:34px}
+
+/* ---- Header : logo a gauche, ancres au centre, bouton d'appel a droite ----
+   Le contenu du header est pose sur le MEME rail que la carte du hero
+   (`--cadre`, 20px) : le bord gauche du logo tombe pile sur le bord gauche de
+   la photo, et le bord droit du bouton sur le bord droit de la photo. C'est la
+   seule ligne verticale visible sur toute la hauteur de l'ecran, donc c'est sur
+   elle qu'on aligne.
+   Les fichiers de logo sont DETOURES (_prepare-assets.py) : sans ca, 86px de
+   vide en haut et 34px a gauche dans le PNG font un logo deux fois trop petit
+   pour sa hauteur CSS, et decale du rail. */
+.hdr{position:sticky;top:0;z-index:60;background:var(--blanc);border-bottom:1px solid var(--trait)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:2rem;
+  padding:0 var(--cadre);height:var(--hdr-h)}
+.hdr-logo{display:flex;align-items:center;flex:none}
+.hdr-logo img{height:36px;width:auto;display:block}
+.hdr-nav{display:flex;align-items:center;gap:clamp(1.2rem,2.4vw,2.4rem);margin-inline:auto}
+.hdr-nav a{position:relative;font-size:15px;font-weight:500;color:var(--encre);padding-block:5px}
+.hdr-nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;
+  background:var(--sable);transform:scaleX(0);transform-origin:left;
+  transition:transform .25s var(--ease)}
+.hdr-nav a:hover::after{transform:scaleX(1)}
+.hdr-cta{flex:none}
+/* Les sections visees par les ancres se degagent du header collant, sinon leur
+   titre arrive dessous. */
+#projet,#metier,#plan,#etapes,#contact{scroll-margin-top:calc(var(--hdr-h) + 16px)}
+@media(max-width:1080px){.hdr-nav{display:none}}
+@media(max-width:820px){
+  .hdr-in{gap:1rem}
+  .hdr-logo img{height:28px}
+  .hdr-cta{font-size:13.5px;padding-left:18px}
+}
+
+/* ---- Hero (calque du modele programme v2 de Tisserin Promotion) : la photo
+   remplit l'ecran sous le header, avec 20px de blanc a gauche, a droite et en
+   bas, et des coins arrondis sur les QUATRE angles. Le titre et les boutons
+   sont poses par-dessus, en bas a gauche. ---- */
+.hero{padding:0}
+.hero-cadre{padding:0 var(--cadre) var(--cadre)}
+.hero-carte{position:relative;border-radius:var(--radius-hero);overflow:hidden;
+  height:calc(100svh - var(--hdr-h) - var(--cadre));min-height:520px;
+  display:flex;flex-direction:column;justify-content:flex-end}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
+.hero-bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(100deg,rgba(28,36,51,.66) 0%,rgba(28,36,51,.34) 46%,rgba(28,36,51,.06) 76%),
+  linear-gradient(180deg,rgba(28,36,51,.34) 0%,rgba(28,36,51,.06) 34%,rgba(28,36,51,.62) 100%)}
+.hero-txt{position:relative;z-index:2;padding:0 clamp(1.75rem,3.6vw,3.25rem)}
+.hero h1{color:var(--blanc);max-width:15ch;text-wrap:balance}
+.hero-actions{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:.75rem;
+  padding:clamp(1.5rem,2.4vw,2rem) clamp(1.75rem,3.6vw,3.25rem) clamp(1.75rem,3.2vw,3rem)}
+@media(max-width:760px){
+  .hero-carte{height:auto;min-height:min(78svh,620px)}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn{width:100%}
+}
+
+/* ---- Sections ---- */
+.sec{padding-block:var(--sec)}
+/* Une section sur deux sur fond blanc casse, pour donner un rythme a la page.
+   Les deux fonds se TOUCHENT, sans marge ni arrondi : c'est le principe, l'oeil
+   doit sentir la respiration sans voir une couture. Le blanc casse n'est pas une
+   couleur de charte, c'est une nuance pale autorisee (cf tmi.md). */
+.sec--casse{background:var(--casse)}
+/* AUCUN aplat de couleur en fond de section : retire le 2026-08-28 a la demande
+   de Louis. Le menthe #DFEEEB est pourtant la couleur claire officielle de la
+   charte (et `--background_light` du theme enfant du site), mais il ne lui va
+   pas en grand aplat sur cette page. Il ne reste qu'en pastille sous les pictos
+   et au survol des boutons. Le seul bloc colore de la page est le CTA navy. */
+.sec-tete{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:start}
+.sec-tete h2{max-width:14ch}
+.sec-intro{max-width:60ch;margin-bottom:clamp(1.8rem,3.5vw,2.8rem)}
+.sec-intro h2{margin-bottom:1rem}
+@media(max-width:900px){.sec-tete{grid-template-columns:1fr;gap:1.8rem}.sec-tete h2{max-width:none}}
+
+/* ---- Pastille de picto, commune aux deux jeux de cartes ---- */
+.carte-ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  background:var(--menthe);color:var(--navy);flex:none}
+.carte-ico svg{width:21px;height:21px;display:block}
+
+/* ---- Cartes de la section intro : quatre en ligne, picto au-dessus ---- */
+.cartes{display:grid;gap:clamp(1rem,1.6vw,1.5rem);margin-top:clamp(2rem,4vw,3.2rem)}
+.cartes-picto{grid-template-columns:repeat(4,minmax(0,1fr))}
+.carte-picto{background:var(--blanc);border:1px solid #EAEAEA;border-radius:var(--radius-carte);
+  padding:1.6rem 1.5rem 1.75rem}
+.carte-picto .carte-ico{margin-bottom:1.1rem}
+.carte-picto h3{margin-bottom:.6rem;text-wrap:balance}
+.carte-picto p{font-size:.9375rem;line-height:1.6;color:var(--texte)}
+@media(max-width:1000px){.cartes-picto{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.cartes-picto{grid-template-columns:1fr}}
+
+/* ---- Cartes de la section metier : empilees, picto a gauche ----
+   Volontairement une autre disposition que celles de l'intro : quatre cartes
+   larges en colonne, le picto en tete de ligne, pour ne pas relire deux fois
+   la meme grille dans la meme page. */
+.cartes-ligne{list-style:none;margin:0;padding:0;display:grid;gap:.85rem;align-content:start}
+.cartes-ligne li{display:flex;gap:1.1rem;align-items:flex-start;
+  background:var(--blanc);border:1px solid #EAEAEA;border-radius:var(--radius-carte);
+  padding:1.3rem 1.5rem}
+.cartes-ligne .carte-ico{width:40px;height:40px}
+.cartes-ligne .carte-ico svg{width:19px;height:19px}
+.cartes-ligne h3{font-size:1.1875rem;margin-bottom:.3rem}
+.cartes-ligne p{font-size:.9375rem;line-height:1.55;color:var(--texte)}
+
+/* 2 colonnes image + texte */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.8rem,4vw,4rem);align-items:center}
+.duo-media img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-bloc)}
+.duo h2{margin-bottom:1.2rem}
+.duo .lede{max-width:46ch}
+.duo-inverse .duo-media{order:2}
+.duo-scene{align-items:stretch}
+.duo-scene .duo-media img{min-height:100%}
+@media(max-width:900px){.duo{grid-template-columns:1fr}.duo-inverse .duo-media{order:0}
+  .duo-scene .duo-media img{min-height:0;aspect-ratio:4/3}}
+
+/* ---- Les etapes ----
+   Pas de cartes ici : quatre colonnes separees par un filet en tete. Trois
+   grilles de cartes d'affilee sur une meme page, ca devient un catalogue. */
+.etapes{list-style:none;margin:clamp(2rem,4vw,3.2rem) 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1.5rem,2.6vw,2.5rem)}
+.etapes li{border-top:1px solid var(--trait);padding-top:1.25rem}
+.etape-num{display:block;font-family:var(--disp);font-weight:700;font-size:2.125rem;
+  line-height:1;letter-spacing:-1px;color:var(--navy);margin-bottom:.9rem}
+.etapes h3{margin-bottom:.55rem}
+.etapes p{font-size:.9375rem;line-height:1.6;color:var(--texte)}
+@media(max-width:1000px){.etapes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.etapes{grid-template-columns:1fr}}
+
+/* =========================================================================
+   FORMULAIRE
+   C'est le formulaire de la pop-up de rappel de TMI, a l'identique : meme
+   balisage (DOM reel du CF7 9776) et meme dessin. Les regles ci-dessous sont
+   la copie de celles portant `#tmiFc` dans spaciaz-child/tmi-popup-contact.css,
+   ou elles habillent deja le meme formulaire pose dans la page d'accueil.
+   Quand la landing part sur le site, ce bloc est rendu par [tmi_contact] et
+   c'est la feuille du theme qui reprend la main : toute retouche du dessin doit
+   donc etre faite DES DEUX COTES, sinon les deux formulaires divergent.
+   ========================================================================= */
+.form-sec{position:relative;padding-block:var(--sec)}
+.form-carte{position:relative;background:var(--blanc);border:1px solid var(--trait);
+  border-radius:var(--radius-bloc);padding:clamp(2rem,4vw,3.25rem);max-width:700px;
+  margin-inline:auto;box-shadow:0 40px 70px -50px rgba(28,36,51,.5)}
+.form-carte header{text-align:center;margin-bottom:2rem}
+.form-carte h2{margin-bottom:.9rem}
+.form-carte header .lede{font-size:1.0625rem}
+
+#tmiFc{
+  --tmipp-navy:#2F3D58; --tmipp-encre:#1C2433; --tmipp-menthe:#DFEEEB;
+  --tmipp-papier:#FDFCFB; --tmipp-champ:#F1F1EF; --tmipp-texte:#33373F;
+  --tmipp-gris:#6E727B; --tmipp-gris-tenu:#8F939B; --tmipp-filet:#E6E5E1;
+  --tmipp-font:"Switzer","Plus Jakarta Sans",system-ui,sans-serif;
+  --tmipp-titre:"Involve","Plus Jakarta Sans",system-ui,sans-serif;
+  font-family:var(--tmipp-font); color:var(--tmipp-texte); text-align:left;
+  -webkit-font-smoothing:antialiased;
+}
+#tmiFc *,#tmiFc *::before,#tmiFc *::after{ box-sizing:border-box; }
+#tmiFc .screen-reader-response{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); clip-path:inset(50%); white-space:nowrap; }
+#tmiFc .hidden-fields-container{ border:0; margin:0; padding:0; min-inline-size:auto; }
+#tmiFc .tmi-form__grid{ display:grid; grid-template-columns:1fr 1fr; gap:11px; }
+#tmiFc .tmi-field{ margin:0; display:flex; flex-direction:column; gap:4px; }
+#tmiFc label{ font-size:11px; font-weight:500; color:var(--tmipp-gris); margin:0; text-transform:none; letter-spacing:0; }
+#tmiFc .tmi-field__req{ color:var(--tmipp-gris-tenu); border:none; text-decoration:none; }
+
+#tmiFc input[type="text"],#tmiFc input[type="email"],#tmiFc input[type="tel"]{
+  font:400 14.5px/1.3 var(--tmipp-font); color:var(--tmipp-encre);
+  width:100%; height:40px; padding:0 13px; margin:0;
+  background:var(--tmipp-champ); border:none; border-radius:11px; box-shadow:none;
+}
+#tmiFc input::placeholder{ color:var(--tmipp-gris-tenu); opacity:1; }
+#tmiFc input[type="text"]:focus,#tmiFc input[type="email"]:focus,#tmiFc input[type="tel"]:focus{
+  outline:none; background:var(--tmipp-papier); box-shadow:inset 0 0 0 1.5px var(--tmipp-encre);
+}
+
+/* Le creneau de rappel a deux presentations : controle segmente sur grand
+   ecran, liste deroulante native sur telephone. Deux champs CF7 distincts,
+   celui qui n'est pas affiche n'a aucune valeur. */
+#tmiFc .tmiPp-creneaux--petit{ display:none; }
+#tmiFc .tmiPp-creneaux{ margin:16px 0 0; }
+#tmiFc .tmiPp-creneaux--grand{ display:flex; align-items:center; gap:14px; }
+#tmiFc .tmiPp-creneaux--grand > span{ flex:0 0 auto; font-size:11px; font-weight:500; color:var(--tmipp-gris); }
+#tmiFc .tmiPp-creneaux--grand .wpcf7-form-control-wrap{ flex:1 1 auto; display:block; min-width:0; }
+#tmiFc .tmiPp-segments{ display:grid; grid-template-columns:repeat(4,1fr); gap:3px; padding:3px; background:var(--tmipp-champ); border-radius:11px; }
+#tmiFc .tmiPp-segments .wpcf7-list-item{ display:block; margin:0; }
+#tmiFc .tmiPp-segments label{
+  position:relative; display:grid; place-items:center; min-height:34px; cursor:pointer;
+  font-size:12.5px; font-weight:500; color:var(--tmipp-texte); border-radius:9px;
+  transition:background .16s ease,box-shadow .16s ease,color .16s ease;
+}
+#tmiFc .tmiPp-segments input{ position:absolute; opacity:0; width:1px; height:1px; margin:0; }
+#tmiFc .tmiPp-segments label:has(input:checked){ background:var(--tmipp-papier); color:var(--tmipp-encre); font-weight:600; box-shadow:0 1px 3px rgba(28,36,51,.12); }
+#tmiFc .tmiPp-segments label:has(input:focus-visible){ box-shadow:0 0 0 2px var(--tmipp-encre); }
+
+#tmiFc select{
+  font:400 14.5px/1.3 var(--tmipp-font); color:var(--tmipp-encre);
+  width:100%; height:40px; padding:0 34px 0 13px; margin:0; cursor:pointer;
+  background-color:var(--tmipp-champ); border:none; border-radius:11px; box-shadow:none;
+  appearance:none; -webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236E727B' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 12px center; background-size:14px 14px;
+}
+#tmiFc select:focus{ outline:none; background-color:var(--tmipp-papier); box-shadow:inset 0 0 0 1.5px var(--tmipp-encre); }
+
+#tmiFc .tmi-form__consents{ display:grid; gap:8px; margin:18px 0 0; padding-top:16px; border-top:1px solid var(--tmipp-filet); }
+#tmiFc .tmi-field--consent{ display:block; }
+#tmiFc .wpcf7-acceptance .wpcf7-list-item{ margin:0; }
+#tmiFc .wpcf7-acceptance label{
+  display:flex; gap:9px; align-items:flex-start; cursor:pointer;
+  font-size:10.5px; font-weight:400; line-height:1.42; color:var(--tmipp-gris);
+}
+/* Case a cocher dessinee entierement : le theme met tous les `input` en
+   appearance:none sans bordure, une case native y serait invisible. */
+#tmiFc .wpcf7-acceptance input[type="checkbox"]{
+  appearance:none; -webkit-appearance:none;
+  flex:0 0 15px; width:15px; height:15px; margin:1px 0 0; position:relative; cursor:pointer;
+  background:var(--tmipp-papier); border:1.5px solid #C9CBCF; border-radius:5px;
+  transition:background .14s ease,border-color .14s ease;
+}
+#tmiFc .wpcf7-acceptance input[type="checkbox"]:checked{ background:var(--tmipp-encre); border-color:var(--tmipp-encre); }
+#tmiFc .wpcf7-acceptance input[type="checkbox"]:checked::after{
+  content:""; position:absolute; left:4px; top:1px; width:4px; height:8px;
+  border:solid var(--tmipp-papier); border-width:0 1.5px 1.5px 0; transform:rotate(45deg);
+}
+#tmiFc .wpcf7-acceptance input[type="checkbox"]:focus-visible{ outline:2px solid var(--tmipp-encre); outline-offset:2px; }
+
+#tmiFc .tmi-form__actions{ margin:20px 0 0; display:flex; justify-content:center; }
+#tmiFc .tmi-btn{
+  font:600 15px/1 var(--tmipp-font);
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  width:auto; min-height:52px; padding:7px 8px 7px 28px; cursor:pointer;
+  background:var(--tmipp-navy); color:var(--tmipp-papier);
+  border:none; border-radius:999px; text-transform:none; letter-spacing:0;
+  transition:background .2s ease,transform .2s ease;
+}
+#tmiFc .tmi-btn:hover{ background:var(--tmipp-encre); transform:translateY(-1px); }
+#tmiFc .tmi-btn:focus-visible{ outline:2px solid var(--tmipp-encre); outline-offset:3px; }
+#tmiFc .tmi-btn__texte{ flex:0 0 auto; }
+#tmiFc .tmi-btn__rond{
+  flex:0 0 38px; width:38px; height:38px; border-radius:50%;
+  display:grid; place-items:center;
+  background:var(--tmipp-papier); color:var(--tmipp-navy); transition:background .2s ease;
+}
+#tmiFc .tmi-btn:hover .tmi-btn__rond{ background:var(--tmipp-menthe); }
+
+#tmiFc .tmi-form__legal{ margin:14px 0 0; font-size:10px; line-height:1.45; color:var(--tmipp-gris-tenu); text-align:center; }
+#tmiFc .tmi-form__legal a{ color:var(--tmipp-gris); text-decoration:underline; text-underline-offset:2px; }
+#tmiFc .tmi-form__legal a:hover{ color:var(--tmipp-encre); }
+
+#tmiFc .wpcf7-not-valid-tip{ display:none; }
+#tmiFc form.a-tente input.wpcf7-not-valid{ box-shadow:inset 0 0 0 1.5px #B4362A; background:#FCF4F3; }
+#tmiFc form.a-tente .wpcf7-not-valid-tip{ display:block; font-size:11px; font-weight:500; color:#B4362A; margin-top:3px; }
+#tmiFc .wpcf7-response-output{ margin:12px 0 0; padding:10px 13px; border-radius:10px; font-size:12px; line-height:1.45; border:none; }
+#tmiFc .wpcf7-response-output[aria-hidden="true"]{ display:none; }
+#tmiFc form.invalid .wpcf7-response-output,#tmiFc form.unaccepted .wpcf7-response-output,#tmiFc form.spam .wpcf7-response-output,#tmiFc form.failed .wpcf7-response-output{ background:#FCF4F3; color:#8E2A20; }
+#tmiFc form.sent .wpcf7-response-output{ background:var(--tmipp-menthe); color:var(--tmipp-navy); }
+
+#tmiFc .tmiPp-fini{ display:none; text-align:center; padding:8px 0 4px; }
+#tmiFc .tmiPp-fini.est-visible{ display:block; }
+#tmiFc .tmiPp-fini h3{ font-family:var(--tmipp-titre); font-weight:700; font-size:19px; letter-spacing:-.03em; color:var(--tmipp-encre); margin:0 0 7px; }
+#tmiFc .tmiPp-fini p{ margin:0; font-size:13.5px; line-height:1.5; color:var(--tmipp-gris); }
+
+@media (max-width:560px){
+  #tmiFc .tmi-form__grid{ gap:9px; }
+  #tmiFc .tmiPp-creneaux--grand{ display:none; }
+  #tmiFc .tmiPp-creneaux--petit{ display:flex; flex-direction:column; gap:4px; }
+  #tmiFc .tmi-form__consents{ margin:14px 0 0; padding-top:12px; }
+  #tmiFc .tmi-form__actions{ margin:16px 0 0; }
+}
+
+/* ---- Bande CTA navy ----
+   Bloc contenu et centre, pas une bande d'un bord a l'autre de l'ecran. */
+.cta-sec{padding:clamp(1rem,2vw,2rem) var(--cadre) clamp(3rem,6vw,5rem)}
+.cta{background:var(--navy);border-radius:var(--radius-bloc);
+  max-width:920px;margin-inline:auto;
+  padding:clamp(2.75rem,5vw,4rem) clamp(1.75rem,4vw,3.5rem);text-align:center}
+.cta h2{color:var(--blanc);max-width:20ch;margin-inline:auto}
+.cta p{color:rgba(255,255,255,.82);margin:1.1rem auto 0;max-width:52ch;font-size:1.0625rem}
+.cta .btn{margin-top:2rem}
+
+/* ---- Footer ---- */
+.ftr{background:var(--encre);color:rgba(255,255,255,.72);padding-block:clamp(2.5rem,5vw,4rem)}
+.ftr .wrap{display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:flex-start}
+.ftr img{height:34px;width:auto}
+.ftr p{font-size:.875rem;line-height:1.6;max-width:38ch}
+.ftr a{color:var(--sable)}
+.ftr-bas{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.14);font-size:.8125rem}
+
+/* ---- Reveal ----
+   Le masquage n'existe QUE si le JS a pris la main (classe .js posee par lp-erp.js).
+   Sans JS, ou si le script echoue, le contenu reste visible. */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none;transition:none}
+  .btn,.btn-rond,.btn-icon,.btn-icon-hover,#tmiFc *{transition:none}
+}
